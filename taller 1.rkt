@@ -1,6 +1,31 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-reader.ss" "lang")((modname |taller 1|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname |taller 1|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+
+
+
+;;funcion que recibe un numero y devuelve su factorial
+(define (factorial x)
+  (cond ((equal? 0 x)
+        1)
+        (else
+         (* x (factorial (- x 1))))))
+  
+
+;;(factorial 5)
+
+;;funcion que recibe un numero y devuelve el elemento de la sucesion de fibonacci
+;;en la posicion indicada por numero ingresado como parametro
+(define (fibonacci x)
+  (cond ((or(equal? x 0) (equal? x 1))
+         1)
+        (else
+         (+ (fibonacci (- x 2)) (fibonacci (- x 1))))))
+
+;;(fibonacci 0)
+
+;;funcion que recibe un simbolo y una lista
+;;se busca el elemento en la lista y si esta retorna #t sino #f
 (define (miembro x lista)
   (cond ((null? lista)
          #f)
@@ -9,84 +34,67 @@
         (else
          (miembro x (cdr lista)))))
 
-;;(miembro '4 '(4 2 7))
+;;(miembro 8 '(1 2 3 4 5))
 
+;;funcion que recibe un numero y una lista
+;;si el elemento esta, lo elimina si no retorna #f
 (define (eliminar x lista)
   (cond ((null? lista)
          '())
         ((equal? x (car lista))
          (cdr lista))
         (else
-         (cons (car lista)
-          (eliminar x (cdr lista))))))
+         (cons (car lista) (eliminar x (cdr lista))))))
 
-;;(eliminar '8 '(4 2 7))
+;;(eliminar 0 '(1 2 3 4 5 6 7 8 9))
 
-(define (menor lista)
-  (cond ((null? lista)
-        #f)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;funcion que se encarga de ordenar los elementos de una lista usando el algoritmo quicksort
+(define (ordenar lista pivote menores mayores)
+  (cond ((and (null? lista) (and (null? menores) (null? mayores)))
+         (append menores (cons pivote mayores)))
+        
+        ((and (null? lista) (null? menores))
+         (append menores
+                 (cons pivote (ordenar (cdr mayores)
+                  (car mayores)
+                  '()
+                  '()))))
+
+         ((and (null? lista) (null? mayores))
+         (append (ordenar (cdr menores) 
+                  (car menores)
+                  '()
+                  '())
+                 (cons pivote mayores)))
+
+         ((null? lista)
+          (append (ordenar (cdr menores)
+                  (car menores)
+                  '()
+                  '())
+                 (cons pivote (ordenar (cdr mayores)
+                  (car mayores)
+                  '()
+                  '()))))
+        
+         ((<= (car lista) pivote)
+         (ordenar (cdr lista)
+                  pivote
+                  (cons (car lista) menores)
+                  mayores))
         (else
-         (menorAux (car lista)(cdr lista)))))
+         (ordenar (cdr lista)
+                  pivote
+                  menores
+                  (cons (car lista) mayores)))))
 
-(define (menorAux x lista)
-  (cond ((null? lista)
-         x)
-        ((< (car lista) x)
-         (menorAux (car lista) (cdr list)))
-        (else
-         (menorAux x (cdr lista)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define (mayor lista)
-  (cond ((null? lista)
-         #f)
-        (else
-         (mayor-aux (car lista) (cdr lista)))))
-
-(define (mayor-aux x lista)
-  (cond ((null? lista)
-         x)
-        ((< x (car lista))
-         (mayor-aux (car lista) (cdr lista)))
-        (else
-         (mayor-aux x (cdr lista)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define(pivot lista)
-  (cond ((null? lista)
-         #f)
-        (else
-         (pivot-aux (car lista)(cdr lista) '() '() ))))
-
-(define(pivot-aux punto lista menores mayores)
-  (cond((null? lista)
-        (list menores mayores))
-       ((<= (car lista) punto)
-        (pivot-aux punto
-                   (cdr lista)
-                   (cons (car lista) menores)
-                   mayores))
-       (else
-        (pivot-aux punto
-                   (cdr lista)
-                   menores
-                   (cons (car lista) mayores)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define (quick-sort lista)
+;;funcion que recibe la lista a ordenar
+(define (quickSort lista)
   (cond ((null? lista)
          '())
         (else
-         (let*
-             ((punto (car lista))
-              (menores-mayores (pivot lista))
-              (menores (car menores-mayores))
-              (mayores (cadr menores-mayores)))
-           (append (quick-sort menores)
-                   (list punto)
-                   (quick-sort mayores))))))
+         (ordenar (cdr lista) (car lista) '() '()))))
 
-;;(quick-sort '(5 4 2 7 3 1 2 2 9 6))
+(quickSort '(1 6 8 0 2 4 3 9 5 7)) 
+        
