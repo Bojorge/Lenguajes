@@ -2,6 +2,7 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-advanced-reader.ss" "lang")((modname |taller 1|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
 
+;; 1
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que recibe un numero y devuelve su factorial
 (define (factorial x)
@@ -10,8 +11,8 @@
         (else
          (* x (factorial (- x 1))))))
   
-;;(factorial 5)
 
+;; 2
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que recibe un numero y devuelve el elemento de la sucesion de fibonacci
 ;;en la posicion indicada por numero ingresado como parametro
@@ -21,8 +22,8 @@
         (else
          (+ (fibonacci (- x 2)) (fibonacci (- x 1))))))
 
-;;(fibonacci 0)
 
+;; 3
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que recibe un simbolo y una lista
 ;;se busca el elemento en la lista y si esta retorna #t sino #f
@@ -34,8 +35,8 @@
         (else
          (miembro x (cdr lista)))))
 
-;;(miembro 8 '(1 2 3 4 5))
 
+;; 4
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que recibe un numero y una lista
 ;;si el elemento esta, lo elimina si no retorna #f
@@ -47,8 +48,8 @@
         (else
          (cons (car lista) (eliminar x (cdr lista))))))
 
-;;(eliminar 0 '(1 2 3 4 5 6 7 8 9))
 
+;; 5
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que se encarga de ordenar los elementos de una lista usando el algoritmo quicksort
 (define (ordenar lista pivote menores mayores)
@@ -97,8 +98,9 @@
         (else
          (ordenar (cdr lista) (car lista) '() '()))))
 
-;;(quickSort '(1 6 8 0 2 4 3 9 5 7))
 
+
+;; 6
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion que recube dos listas y devuelve otra lista con pares (atributo, valor)
 (define  (wrapper lista1 lista2)
@@ -107,8 +109,9 @@
         (else
          (cons (list (car lista1) (car lista2)) (wrapper (cdr lista1) (cdr lista2))))))
 
-;;(wrapper '(tipo marca modelo color AC transmision) '(hatchback suzuki forza rojo si manual))
 
+
+;; 7
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion para eliminar un elemento de un arbol binario
 (define (eliminarNodo x arb)
@@ -177,13 +180,15 @@
         (else
          (caddr arb))))
 
-;;(eliminarNodo 14 '(10 (5 3 8) (15 14 18)))
 
+
+;; 8
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;funcion para rutas "anchura primero" de un grafo
 (define (anchuraPrimero ini fin grafo)
   (anchuraPrimeroAux (list (list ini)) fin grafo '()))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 (define (anchuraPrimeroAux rutas fin grafo total)
   (cond ((null? rutas)
          (map reverse total))
@@ -199,24 +204,50 @@
                             fin
                             grafo
                             total))))
-;;se obtiene una solucion cuando se ha llegado al nodo destino
-(define (solucion? fin ruta)
-  (equal? fin (car ruta)))
-;;retorna los vecinos inmediatos
-(define (vecinos x grafo)
-  (let ((resultado (assoc x grafo))
-        )
-    (cond ((equal? resultado #f)
-           #f)
-          (else
-           (cadr resultado)))))
+
 ;;crea nuevas trayectorias si no lo puede hacer devuelve #f
 (define (extender ruta grafo)
   (apply append
-         (map (extenderAux x)
+         (map (lambda(x)
+                (cond ((miembro x ruta) '())
+                      (else (list (cons x ruta)))))
               (vecinos (car ruta) grafo))))
-;;;;;;;;;;;;;;;;;;
-(define (extenderAux x)
-  (cond ((miembro? x ruta)
-         '())
-        (else (list (cons x ruta)))))
+
+;;se obtiene una solucion cuando se ha llegado al nodo destino
+(define (solucion? fin ruta)
+  (equal? fin (car ruta)))
+  
+;;retorna los vecinos inmediatos
+(define (vecinos x grafo)
+    (cond ((equal? (assoc x grafo) #f)
+           '())
+          (else
+           (cadr (assoc x grafo)))))
+         
+;;grafo de prueba
+(define graph '((i(a b))
+                (a (i c d))
+                (c (a b x))
+                (d (a b f))
+                (x (c))
+                (f(d))))
+
+
+;; PRUEBAS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;(factorial 5)
+
+;;(fibonacci 9)
+
+;;(miembro 8 '(1 2 3 4 5))
+
+;;(eliminar 0 '(1 2 3 4 5 6 7 8 9))
+
+;;(quickSort '(1 6 8 0 2 4 3 9 5 7))
+
+;;(wrapper '(tipo marca modelo color AC transmision) '(hatchback suzuki forza rojo si manual))
+
+;;(eliminarNodo 14 '(10 (5 3 8) (15 14 18)))
+
+(anchuraPrimero 'i 'f graph)
