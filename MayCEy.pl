@@ -18,14 +18,17 @@ identidadAvion(a340) :-  a340, !.
 
 beechcraft:-
 write('le corresponde la pista 1'),
+nl,
 p1.
 
 boing717:-
 write('le corresponde la pista 2 '),
+nl,
 p2.
 
 a340:-
 write('le corresponde la pista 3'),
+nl,
 p3.
 
 
@@ -44,10 +47,19 @@ verificar(aterrizar),
 verificar(despegar).
 
 emergencia(secuestro):- secuestro.
+emergencia(nocombustible):- nocombustible.
 
 
 secuestro:-
-write('llamare a la policia para que se encargue del secuestro').
+write('llamare a la policia para que se encargue del secuestro'),
+nl,
+inicio.
+
+
+nocombustible:-
+write('buscaremos una pista para que aterrice lo mas pronto posible'),
+nl,
+inicio.
 
 
 
