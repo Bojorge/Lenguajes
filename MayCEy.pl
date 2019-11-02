@@ -1,24 +1,84 @@
 
-conversation:-write('* Identifiquese '),read(X),saludo(X,[]).
-
-nombre([boing717|X],X).
-nombre([embraer190|X],X).
-
-
-saludo([hola|X],X).
-controlador([maycey|X],X).
-alerta([secuestro|X],X).
-
-verbo([vuela|X],X).
-verbo([despega|X],X).
-verbo([aterriza|X],X).
-determinante(singular,[el|X],X).
-determinante(plural,[los|X],X).
-
-usersay(X,Y):-saludo(X,Z),controlador(Z,Y).
-usersay(X,Y):-alerta(X,Y).
+inicio:-
+write('identifiquese '),
+read(X),
+identidadAvion(X),
+write('en que le puedo ayudar '),
+read(Y),
+emergencia(Y),
+undo.
 
 
-max(X,Y,Z):-X>Y->Z is X;Z is Y.
+/*identidad del avion para asignarle una pista*/
+identidadAvion(beechcraft) :-  beechcraft, !.
+identidadAvion(boing717) :- boing717, !.
+identidadAvion(a340) :-  a340, !.
 
-result(X,Y):-X>70->Y =pass;Y =fail.
+
+
+beechcraft:-
+write('le corresponde la pista 1'),
+p1.
+
+boing717:-
+write('le corresponde la pista 2 '),
+p2.
+
+a340:-
+write('le corresponde la pista 3'),
+p3.
+
+
+p1:-
+verificar(aterrizar),
+verificar(despegar).
+
+
+p2:-
+verificar(aterrizar),
+verificar(despegar).
+
+
+p3:-
+verificar(aterrizar),
+verificar(despegar).
+
+emergencia(secuestro):- secuestro.
+
+
+secuestro:-
+write('llamare a la policia para que se encargue del secuestro').
+
+
+
+/* how to ask questions */
+preguntar(Question) :-
+write('Usted quiere '),
+write(Question),
+nl,
+read(Response),
+nl,
+( (Response == y)
+->
+assert(yes(Question)) ;
+assert(no(Question)), fail).
+
+:- dynamic yes/1,no/1.
+
+/*How to verify something */
+verificar(S) :-
+(yes(S)
+->
+true ;
+(no(S)
+->
+fail ;
+preguntar(S))).
+/* undo all yes/no assertions*/
+undo :- retract(yes(_)),fail.
+undo :- retract(no(_)),fail.
+undo.
+
+
+
+
