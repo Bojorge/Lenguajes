@@ -55,13 +55,17 @@ avionMediano:-
 espacio,
 write('Avion mediano'),
 nl,
-write('le corresponde una de las pistas 2A o 2B '),
+write('le corresponde una de las pistas p2_1 o p2_2 '),
 nl,
+(yes(p2_1)
+->
+p2_1 ;
+(nl,
 nl,
-write('Necesita  ???  >>>  aterrizar/despegar : '),
-read(X),
-X,
-p2_1.
+p2_2)).
+
+
+
 
 avionGrande:-
 espacio,
@@ -111,21 +115,30 @@ X.
 
 p2_1:-
 espacio,
-write('Esta pista mide 2km y tiene una direccion de Este a Oeste'),
+%assertz(p2_1),
+write('Pista p2_1. Esta pista mide 2km y tiene una direccion de Este a Oeste'),
 nl,
 write('Necesita  ???  >>>  aterrizar/despegar : '),
+nl,
 read(X),
-X.
+( X==aterrizar
+->
+aterrizar(p2_1);
+despegar(p2_1)).
+
 
 p2_2:-
 espacio,
-write('Esta pista mide 2 km y tiene una direccion de Oeste a Este'),
+%assertz(p2_2),
+write('Pista p2_2. Esta pista mide 2 km y tiene una direccion de Oeste a Este'),
 nl,
 write('Necesita  ???  >>>  aterrizar/despegar : '),
+nl,
 read(X),
-X.
-
-
+( X==aterrizar
+->
+aterrizar(p2_2);
+despegar(p2_2)).
 
 p3:-
 espacio,
@@ -156,41 +169,66 @@ write('buscaremos una pista para que aterrice lo mas pronto posible'),
 continuar.
 
 
-aterrizar:-
+aterrizar(Pista):-
 espacio,
-write('Tiene permiso para aterrizar en la pista correspondiente '),
-continuar.
-
-despegar:-
+write('espere por el permiso para ATERRIZAR '),
 espacio,
-write('Tiene permiso para despegar en la pista correspondiente '),
-continuar.
+verificar(Pista).
 
+despegar(Pista):-
+espacio,
+write('espere por el permiso para DESPEGAR '),
+espacio,
+verificar(Pista).
 
 
 /* how to ask questions */
-preguntar(Question) :-
-write('Usted quiere '),
-write(Question),
-nl,
+confirmar(Pista) :-
+write('  ¿ok?  >>>  '),
 read(Response),
 nl,
-( (Response == y)
+( (Response == ok)
 ->
-assert(yes(Question)) ;
-assert(no(Question)), fail).
+assert(no(Pista)),
+continuar;
+assert(yes(Pista)),
+write('NO se usara la pista '),
+write(Pista),
+continuar).
 
-:- dynamic yes/1,no/1.
+:- dynamic no/1,yes/1.
 
 /*How to verify something */
-verificar(S) :-
-(yes(S)
+verificar(Pista) :-
+(yes(Pista)
 ->
-true ;
-(no(S)
+write('Puede utilizar la pista '),
+write(Pista),
+confirmar(Pista);
+(no(Pista)
 ->
-fail ;
-preguntar(S))).
+(espacio,
+write('la pista '),
+write(Pista),
+write(' esta ocupada '),
+nl,
+write(' * Se le asignara otra * '),
+asignar(Pista)))).
+
+
+asignar(Pista):-
+(Pista==p2_1
+->
+(yes(p3)
+->
+write(' puede usar p3 '),
+verificar(p3);
+write(' todas las pistas estan ocupadas '));
+write(' estan ocupadas las pistas '),
+inicio).
+
+
+
 /* undo all yes/no assertions*/
 undo :- retract(yes(_)),fail.
 undo :- retract(no(_)),fail.
@@ -200,3 +238,4 @@ undo.
 espacio:-
 nl,nl,nl,nl,nl,nl.
 
+%:- dynamic p1/0,p2_1/0,p2_2/0,p3/0.
