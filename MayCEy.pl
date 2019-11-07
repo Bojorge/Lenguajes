@@ -79,16 +79,16 @@ nl.
 pistaOcupada(boing,X):-
 ( X==p1
 ->
-p1;
+pista(p1);
 ( X==p2_1
 ->
-p2_1;
+pista(p2_1);
 ( X==p2_2
 ->
-p2_2;
+pista(p2_2);
 ( X==p3
 ->
-p3;
+pista(p3);
 write('ls pista no se encuentra '))));
 write('verifique el nombre de la pista ')).
 
