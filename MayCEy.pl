@@ -73,6 +73,28 @@ write('le corresponde la pista 3'),
 nl.
 
 
+
+
+
+pistaOcupada(boing,X):-
+( X==p1
+->
+p1;
+( X==p2_1
+->
+p2_1;
+( X==p2_2
+->
+p2_2;
+( X==p3
+->
+p3;
+write('ls pista no se encuentra '))));
+write('verifique el nombre de la pista ')).
+
+
+
+
 pista(p1):-
 espacio,
 write('Tiene disponible un kilometro de pista '),
