@@ -10,6 +10,8 @@
 //#include <allegro5/allegro_ttf.h>
 //#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_native_dialog.h>
 
 #define ScreenWidth 800
 #define  ScreenHeight 600
@@ -18,8 +20,12 @@
 
 int main() {
 
-    //  Crea un puntero a un ALLEGRO_DISPLAY
-    ALLEGRO_DISPLAY* frame = NULL;
+    // Crea un puntero a un ALLEGRO_DISPLAY
+    ALLEGRO_DISPLAY* frame=NULL;
+    ALLEGRO_BITMAP *player=NULL;
+
+    int playerWidtth=0;
+    int playerHeight=0;
 
     const float FPS=60.0; //fotogramas por segundos
 
@@ -66,14 +72,28 @@ int main() {
     al_install_keyboard();
 
     //permite usar el mouse
-    al_install_mouse();
+    //al_install_mouse();
 
     //con esto se obtinene cual tecla es precionada en ese instante
     ALLEGRO_KEYBOARD_STATE keyState;
 
+    //permite cargar imagenes
+    al_init_image_addon();
+
+    if(!al_init_image_addon()) {
+        al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",
+                                   NULL, ALLEGRO_MESSAGEBOX_ERROR);
+        return 0;
+    }
+
+    player = al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
+    //playerWidtth=al_get_bitmap_width(player);
+    //playerHeight=al_get_bitmap_height(player);
+
     //se declara un color
     ALLEGRO_COLOR electBlue=al_map_rgb(66,66,255);
     ALLEGRO_COLOR electGreen=al_map_rgb(66,255,66);
+
 
     //array de puntos para trazar una linea
     //float points[8]={0,0,400,100,50,200,ScreenWidth,ScreenHeight};
@@ -92,19 +112,21 @@ int main() {
     al_register_event_source(event_queue,al_get_keyboard_event_source());
     al_register_event_source(event_queue,al_get_timer_event_source(timer));
     al_register_event_source(event_queue,al_get_display_event_source(frame));
-    al_register_event_source(event_queue,al_get_mouse_event_source());
+    //al_register_event_source(event_queue,al_get_mouse_event_source());
 
-    al_hide_mouse_cursor(frame);
+    //al_hide_mouse_cursor(frame); //muestra el cursor
 
     al_start_timer(timer);
     //posiciones horizontal y vertical
-    int x=10,y=10;
+    float x=10,y=10;
     //velocidad del movimiento
-    int moveSpeed=2;
+    float moveSpeed=2;
 
-    int dir=DOWN;
 
-    bool draw=true;
+
+    int direction=DOWN, sourceX=32,sourceY=0;
+    bool draw=true, active=false;
+
 
     //variable para salir del loop
     bool done=false;
@@ -114,6 +136,7 @@ int main() {
         ALLEGRO_EVENT events;
         //funcion que esta a la escucha de algun evento
         al_wait_for_event(event_queue,&events);
+        al_get_keyboard_state(&keyState);
 
         if(events.type==ALLEGRO_EVENT_KEY_UP) {
             switch (events.keyboard.keycode) {
@@ -125,48 +148,54 @@ int main() {
         else if(events.type==ALLEGRO_EVENT_DISPLAY_CLOSE) {
             done = true;
         }
-        
-
         if(events.type==ALLEGRO_EVENT_TIMER){
-            al_get_keyboard_state(&keyState);
+            active=true;
 
-            if(al_key_down(&keyState,ALLEGRO_KEY_DOWN))
-                y+=moveSpeed;
-            else if(al_key_down(&keyState,ALLEGRO_KEY_UP))
-                y-=moveSpeed;
-            else if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT))
-                x+=moveSpeed;
-            else if(al_key_down(&keyState,ALLEGRO_KEY_LEFT))
-                x-=moveSpeed;
-
-                draw=true;
-
+            if(al_key_down(&keyState,ALLEGRO_KEY_DOWN)) {
+                y += moveSpeed;
+                direction = DOWN;
             }
-        if(draw){
-            draw=false;
-            //forma un triangulo con el borde de cierto color
-            al_draw_rectangle(x,y,x+20,y+20,electBlue,5.0);
-            //rellena el triangulo con cierto color
-            al_draw_filled_rectangle(x,y,x+20,y+20,electGreen);
+            else if(al_key_down(&keyState,ALLEGRO_KEY_UP)){
+                y-=moveSpeed;
+                direction = UP;
+            }
+            else if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT)){
+                x+=moveSpeed;
+                direction = RIGHT;
+            }
+            else if(al_key_down(&keyState,ALLEGRO_KEY_LEFT)){
+                x-=moveSpeed;
+                direction = LEFT;
+            } else{
+                active=false;
+            }
 
-            //  Intercambia los buffers, ahora la ventana mostrará tendrá fondo
-            //  de color. Si minimiza la ventana y la vuelve restaurar, se
-            //  dará cuenta que ahora la pantalla muestra lo que estuvo detrás.
-            //  Esto es porque el buffer ahora tiene lo que estaba detrás de la
-            //  ventana.
+            if(active)
+                sourceX+=al_get_bitmap_width(player)/3;
+            else
+                sourceX=32;
+
+            if(sourceX>=al_get_bitmap_width(player))
+                sourceX=0;
+
+            sourceY=direction;
+            draw=true;
+        }
+        if(draw){
+
+            al_draw_bitmap_region(player,sourceX,sourceY*al_get_bitmap_height(player)/4,32,32,x,y,NULL);
+
+            //pone la imagen en la ventana en la posicion (x,y)
+            //al_draw_bitmap(player,x,y,0);
+
+            //  Intercambia los buffers, ahora la ventana mostrará fond de color
             al_flip_display();
 
             //en este punto es donde se muestra el contenido e inmediatamente coloca el color de la ventana
             //para mostrar un nuevo cambio si que se vea el anterior
 
 
-            //  La siguiente función limpia el buffer, con un color determinado,
-            //  recibe como parámetro un ALLEGRO_COLOR.
-            //  La función al_map_rgb(R,G,B) recibe como tres enteres sin signo,
-            //  cada uno determina la cantidad del color rojo, verde y azul
-            //  respectivamente; esta función devuelve un ALLEGRO_COLOR con lo
-            //  que encaja perfecto con el parámetro que recibe la función
-            //  al_clear_to_color(...)
+            //  La función limpia el buffer, con un color determinado, recibe como parámetro un ALLEGRO_COLOR.
             al_clear_to_color(al_map_rgb(0,0,0));
         }
 
@@ -174,6 +203,8 @@ int main() {
     //elimina la cola de eventos
     al_destroy_event_queue(event_queue);
 
+    //elimina el bitmap
+    al_destroy_bitmap(player);
     //elimina el timer
     al_destroy_timer(timer);
     //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
@@ -183,18 +214,3 @@ int main() {
 }
 
 
-//permite usar fuentes
-//al_init_font_addon();
-//al_init_ttf_addon();
-//ALLEGRO_FONT *font=al_load_font("Orbitron Black.ttf",36,NULL);
-//al_draw_text(font,al_map_rgb(44,117,255),ScreenWidth/2,ScreenHeight/2,ALLEGRO_ALIGN_CENTRE,"texto");
-
-//elimina la fuente
-//al_destroy_font(font);
-
-
-//  Función que recibe como parámetro un número del tipo double, y que
-//  refiere a la cantidad de segundos que esperará para pasar a la
-//  siguiente instrucción. En este caso luego de pasados dos segundos
-//  pasará a return 0 con lo que se cerrará la ventana.
-//al_rest(6);
