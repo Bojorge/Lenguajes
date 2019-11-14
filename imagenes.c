@@ -3,13 +3,10 @@
 //
 
 
-#include <stdlib.h>
-#include <unistd.h>
+
+
 #include <allegro5/allegro.h>
-#include <stdio.h>
-//#include <allegro5/allegro_ttf.h>
-//#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_primitives.h>
+//#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 
@@ -20,93 +17,103 @@
 
 int main() {
 
-    // Crea un puntero a un ALLEGRO_DISPLAY
-    ALLEGRO_DISPLAY* frame=NULL;
-    ALLEGRO_BITMAP *player=NULL;
-
     int playerWidtth=0;
     int playerHeight=0;
-
     const float FPS=60.0; //fotogramas por segundos
-
     enum Direction {UP,DOWN,LEFT,RIGHT};
+    //posiciones horizontal y vertical
+    float x=10,y=10;
+    //velocidad del movimiento
+    float moveSpeed=2;
+    float velX, velY;
+    velX=velY=0;
+    int direction=DOWN, sourceX=32,sourceY=0;
+    bool draw=true, active=false;
+    //variable para salir del loop
+    bool done=false;
+    const float gravity=1;
+    bool jump=false;
+    float jumpSpeed=15;
+
+
 
     //  Inicia allegro5, esto es necesario para realizar cualquier función de allegro
     //  Verifica si la función devuelve 0, si es asi, generará un mensaje de
     //  error, y el programa retornará -1 lo cual denota un programa fallido
     if(!al_init())
     {
-        printf("Hubo un error en la inicialización de Allegro");
+        al_show_native_message_box(NULL,NULL,NULL,"failed to init allegro!",NULL,0);
         return -1;
     }
 
 
-    //Funcion para redimensionar la pantalla
-    al_set_new_display_flags(ALLEGRO_WINDOWED | ALLEGRO_RESIZABLE);
-    //al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW);
-    //al_set_new_display_flags(ALLEGRO_NOFRAME);
-    //al_set_new_display_flags(ALLEGRO_OPENGL);
+    //esta funcion permite usar el teclado
+    al_install_keyboard();
+
+    //permite cargar imagenes
+    al_init_image_addon();
+
+    // Crea un puntero a un ALLEGRO_DISPLAY
+    ALLEGRO_DISPLAY* frame=NULL;
+    ALLEGRO_BITMAP *player=NULL;
+
+    //se declara un color
+    ALLEGRO_COLOR electBlue=al_map_rgb(66,66,255);
+    ALLEGRO_COLOR electGreen=al_map_rgb(66,255,66);
+
+    //con esto se obtinene cual tecla es precionada en ese instante
+    ALLEGRO_KEYBOARD_STATE keyState;
+
+    //actualiza la ventana cada 0.01666 milisegundos
+    ALLEGRO_TIMER *timer=al_create_timer(1.0/FPS);
+
+    //cola de eventos
+    ALLEGRO_EVENT_QUEUE *event_queue=al_create_event_queue();
 
     //  al_create_display(X,Y) crea un puntero a un ALLEGRO_DISPLAY
     //  y crea un ALLEGRO_DISPLAY de las dimensiones especificadas, en
     //  este caso X de ancho por Y de alto
     frame = al_create_display(ScreenWidth,ScreenHeight);
 
-    //Posicion de la ventana
-    al_set_window_position(frame,200,100);
+    if(!frame)
+    {
+        al_show_native_message_box(NULL,NULL,NULL,"failed to init frame!",NULL,0);
+        return -1;
+    }
+
+    //Funcion para redimensionar la pantalla
+    //al_set_new_display_flags(ALLEGRO_WINDOWED | ALLEGRO_RESIZABLE);
+    //al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW);
+    al_set_new_display_flags(ALLEGRO_NOFRAME);
+    //al_set_new_display_flags(ALLEGRO_OPENGL);
 
     //titulo de la ventana
     al_set_window_title(frame,"Este es el titulo de la ventana");
 
+    //Posicion de la ventana
+    al_set_window_position(frame,200,100);
 
 
-    if(!frame)
-    {
-        printf("Hubo un error en la creación de la ventana");
-        return -1;
-    }
+
     //esta funcion permite comenzar a dibujar las figuras
-    al_init_primitives_addon();
+    //al_init_primitives_addon();
 
-    //esta funcion permite usar el teclado
-    al_install_keyboard();
+
 
     //permite usar el mouse
     //al_install_mouse();
 
-    //con esto se obtinene cual tecla es precionada en ese instante
-    ALLEGRO_KEYBOARD_STATE keyState;
-
-    //permite cargar imagenes
-    al_init_image_addon();
 
     if(!al_init_image_addon()) {
-        al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",
-                                   NULL, ALLEGRO_MESSAGEBOX_ERROR);
+        al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
         return 0;
     }
 
     player = al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
-    //playerWidtth=al_get_bitmap_width(player);
-    //playerHeight=al_get_bitmap_height(player);
-
-    //se declara un color
-    ALLEGRO_COLOR electBlue=al_map_rgb(66,66,255);
-    ALLEGRO_COLOR electGreen=al_map_rgb(66,255,66);
+    playerWidtth=al_get_bitmap_width(player);
+    playerHeight=al_get_bitmap_height(player);
 
 
-    //array de puntos para trazar una linea
-    //float points[8]={0,0,400,100,50,200,ScreenWidth,ScreenHeight};
-    //dibuja una linea
-    //al_draw_spline(points,electBlue,1.0);
-
-
-    //actualiza la ventana cada 0.01666 milisegundos
-    ALLEGRO_TIMER *timer=al_create_timer(1.0/FPS);
-
-
-    //cola de eventos
-    ALLEGRO_EVENT_QUEUE *event_queue=al_create_event_queue();
 
     //registra la fuente del evento, recibe una cola de eventos y el tipo de evento
     al_register_event_source(event_queue,al_get_keyboard_event_source());
@@ -117,19 +124,7 @@ int main() {
     //al_hide_mouse_cursor(frame); //muestra el cursor
 
     al_start_timer(timer);
-    //posiciones horizontal y vertical
-    float x=10,y=10;
-    //velocidad del movimiento
-    float moveSpeed=2;
 
-
-
-    int direction=DOWN, sourceX=32,sourceY=0;
-    bool draw=true, active=false;
-
-
-    //variable para salir del loop
-    bool done=false;
     //loop del juego
     while(!done) {
         //instancia un nuevo evento
@@ -145,40 +140,48 @@ int main() {
                     break;
             }
         }
-        else if(events.type==ALLEGRO_EVENT_DISPLAY_CLOSE) {
-            done = true;
-        }
         if(events.type==ALLEGRO_EVENT_TIMER){
             active=true;
 
-            if(al_key_down(&keyState,ALLEGRO_KEY_DOWN)) {
-                y += moveSpeed;
-                direction = DOWN;
-            }
-            else if(al_key_down(&keyState,ALLEGRO_KEY_UP)){
-                y-=moveSpeed;
-                direction = UP;
-            }
-            else if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT)){
-                x+=moveSpeed;
+            if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT)){
+                velX=moveSpeed;
                 direction = RIGHT;
             }
             else if(al_key_down(&keyState,ALLEGRO_KEY_LEFT)){
-                x-=moveSpeed;
+                velX=-moveSpeed;
                 direction = LEFT;
             } else{
+                velX=0;
                 active=false;
+
+                if(al_key_down(&keyState,ALLEGRO_KEY_UP) && jump){
+                    velY=-jumpSpeed;
+                    jump=false;
+                }
             }
 
             if(active)
                 sourceX+=al_get_bitmap_width(player)/3;
             else
-                sourceX=32;
+                sourceX=32; //la imagen tiene 3 imagenes horizontalmente, cada un de 32 pixel en el eje X
 
             if(sourceX>=al_get_bitmap_width(player))
                 sourceX=0;
 
             sourceY=direction;
+
+            if(!jump)
+                velY+=gravity; //al saltar, la velocidad sera hacia abajo en la pantalla aumentando en Y
+            else
+                velY=0;
+            x+=velX;
+            y+=velY;
+
+            jump=(y+32>=560);
+
+            if(jump)
+                y=560-32;
+
             draw=true;
         }
         if(draw){
@@ -196,7 +199,7 @@ int main() {
 
 
             //  La función limpia el buffer, con un color determinado, recibe como parámetro un ALLEGRO_COLOR.
-            al_clear_to_color(al_map_rgb(0,0,0));
+            al_clear_to_color(al_map_rgb(255,255,255));
         }
 
     }
