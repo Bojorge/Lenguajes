@@ -9,10 +9,20 @@
 //#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
+#include <allegro5/bitmap.h>
+//#include <cursesw.h>
 
 #define ScreenWidth 800
 #define  ScreenHeight 600
 
+
+// x, y son las coordenadas de player. ex, ey las del enemigo
+bool Collision(float x, float y, float ex, float ey,int width, int height){
+    if(x+width < ex || x > ex+width || y+height < ey || y > ey+height){
+        return false;
+    }
+    return true;
+}
 
 
 int main() {
@@ -20,7 +30,8 @@ int main() {
     int playerWidtth=0;
     int playerHeight=0;
     const float FPS=60.0; //fotogramas por segundos
-    enum Direction {UP,DOWN,LEFT,RIGHT};
+    const float frameFPS=15.0;
+    enum Direction {DOWN,UP,LEFT,RIGHT};
     //posiciones horizontal y vertical
     float x=10,y=10;
     //velocidad del movimiento
@@ -53,9 +64,10 @@ int main() {
     //permite cargar imagenes
     al_init_image_addon();
 
-    // Crea un puntero a un ALLEGRO_DISPLAY
+    // Crea un puntero a un DISPLAY y un BITMAP
     ALLEGRO_DISPLAY* frame=NULL;
     ALLEGRO_BITMAP *player=NULL;
+    ALLEGRO_BITMAP *player2=NULL;
 
     //se declara un color
     ALLEGRO_COLOR electBlue=al_map_rgb(66,66,255);
@@ -66,20 +78,22 @@ int main() {
 
     //actualiza la ventana cada 0.01666 milisegundos
     ALLEGRO_TIMER *timer=al_create_timer(1.0/FPS);
+    ALLEGRO_TIMER *frameTimer=al_create_timer(1.0/frameFPS);
 
     //cola de eventos
     ALLEGRO_EVENT_QUEUE *event_queue=al_create_event_queue();
 
-    //  al_create_display(X,Y) crea un puntero a un ALLEGRO_DISPLAY
-    //  y crea un ALLEGRO_DISPLAY de las dimensiones especificadas, en
-    //  este caso X de ancho por Y de alto
+    //  al_create_display(X,Y) y crea un ALLEGRO_DISPLAY de las dimensiones especificadas, en
     frame = al_create_display(ScreenWidth,ScreenHeight);
 
-    if(!frame)
+    if(!frame) //si no se puede crear la ventana, muestra un error
     {
         al_show_native_message_box(NULL,NULL,NULL,"failed to init frame!",NULL,0);
         return -1;
     }
+
+    //Posicion de la ventana
+    al_set_window_position(frame,200,100);
 
     //Funcion para redimensionar la pantalla
     //al_set_new_display_flags(ALLEGRO_WINDOWED | ALLEGRO_RESIZABLE);
@@ -88,11 +102,7 @@ int main() {
     //al_set_new_display_flags(ALLEGRO_OPENGL);
 
     //titulo de la ventana
-    al_set_window_title(frame,"Este es el titulo de la ventana");
-
-    //Posicion de la ventana
-    al_set_window_position(frame,200,100);
-
+    //al_set_window_title(frame,"Este es el titulo de la ventana");
 
 
     //esta funcion permite comenzar a dibujar las figuras
@@ -110,6 +120,7 @@ int main() {
     }
 
     player = al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
+    player2= al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
     playerWidtth=al_get_bitmap_width(player);
     playerHeight=al_get_bitmap_height(player);
 
@@ -118,12 +129,14 @@ int main() {
     //registra la fuente del evento, recibe una cola de eventos y el tipo de evento
     al_register_event_source(event_queue,al_get_keyboard_event_source());
     al_register_event_source(event_queue,al_get_timer_event_source(timer));
+    al_register_event_source(event_queue,al_get_timer_event_source(frameTimer));
     al_register_event_source(event_queue,al_get_display_event_source(frame));
     //al_register_event_source(event_queue,al_get_mouse_event_source());
 
     //al_hide_mouse_cursor(frame); //muestra el cursor
 
     al_start_timer(timer);
+    al_start_timer(frameTimer);
 
     //loop del juego
     while(!done) {
@@ -140,35 +153,51 @@ int main() {
                     break;
             }
         }
-        if(events.type==ALLEGRO_EVENT_TIMER){
-            active=true;
+        else if(events.type==ALLEGRO_EVENT_TIMER){
 
-            if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT)){
-                velX=moveSpeed;
-                direction = RIGHT;
-            }
-            else if(al_key_down(&keyState,ALLEGRO_KEY_LEFT)){
-                velX=-moveSpeed;
-                direction = LEFT;
-            } else{
-                velX=0;
-                active=false;
 
-                if(al_key_down(&keyState,ALLEGRO_KEY_UP) && jump){
-                    velY=-jumpSpeed;
-                    jump=false;
+            if(events.timer.source==timer){
+                active=true;
+                if(al_key_down(&keyState,ALLEGRO_KEY_RIGHT)){
+                    velX=moveSpeed;
+                    direction = RIGHT;
+                }
+                else if(al_key_down(&keyState,ALLEGRO_KEY_LEFT)){
+                    velX=-moveSpeed;
+                    direction = LEFT;
+                } else{
+                    velX=0;
+                    active=false;
+
+                    if(al_key_down(&keyState,ALLEGRO_KEY_UP) && jump){
+                        velY=-jumpSpeed;
+                        jump=false;
+                    }
+                }
+                if(Collision(x,y,200,527,32,32)) { // al_get_bitmap_width(player) = 32
+                    if(direction==DOWN)
+                        y-=moveSpeed;
+                    else if(direction==UP)
+                        y+=moveSpeed;
+                    else if(direction==RIGHT)
+                        x-=moveSpeed;
+                    else if(direction==LEFT)
+                        x+=moveSpeed;
                 }
             }
 
-            if(active)
-                sourceX+=al_get_bitmap_width(player)/3;
-            else
-                sourceX=32; //la imagen tiene 3 imagenes horizontalmente, cada un de 32 pixel en el eje X
+            else if(events.timer.source==frameTimer){
+                if(active)
+                    sourceX+=al_get_bitmap_width(player)/3;
+                else
+                    sourceX=32; //la imagen tiene 3 imagenes horizontalmente, cada un de 32 pixel en el eje X
 
-            if(sourceX>=al_get_bitmap_width(player))
-                sourceX=0;
+                if(sourceX>=al_get_bitmap_width(player))
+                    sourceX=0;
 
-            sourceY=direction;
+                sourceY=direction;
+            }
+
 
             if(!jump)
                 velY+=gravity; //al saltar, la velocidad sera hacia abajo en la pantalla aumentando en Y
@@ -188,6 +217,7 @@ int main() {
 
             al_draw_bitmap_region(player,sourceX,sourceY*al_get_bitmap_height(player)/4,32,32,x,y,NULL);
 
+            al_draw_bitmap_region(player2,0,0,32,32,200,527,NULL);
             //pone la imagen en la ventana en la posicion (x,y)
             //al_draw_bitmap(player,x,y,0);
 
