@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="interfaz"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/manuel/CLionProjects/interfaz/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/manuel/CLionProjects/interfaz/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="interfaz">
+				<Option output="/home/manuel/CLionProjects/interfaz/cmake-build-debug/interfaz" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/manuel/CLionProjects/interfaz/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/manuel/CLionProjects/interfaz/allegro/5.0.11/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 interfaz"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="interfaz/fast">
+				<Option output="/home/manuel/CLionProjects/interfaz/cmake-build-debug/interfaz" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/manuel/CLionProjects/interfaz/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/manuel/CLionProjects/interfaz/allegro/5.0.11/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 interfaz/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/manuel/CLionProjects/interfaz/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/manuel/CLionProjects/interfaz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/GameMode.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/GameMode.h">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/SelectEnemies.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/SelectEnemies.h">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/WaitingRoom.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/WaitingRoom.h">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/game.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/game.h">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/imagenes.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/imgs.cpp">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/initFrame.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/main.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/movimiento.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/prueba.c">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/prueba.h">
+			<Option target="interfaz"/>
+		</Unit>
+		<Unit filename="/home/manuel/CLionProjects/interfaz/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
