@@ -24,17 +24,24 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
     //esta funcion permite usar el teclado
     al_install_keyboard();
 
+    al_init_primitives_addon();
+
     //permite cargar imagenes
     al_init_image_addon();
 
-    // Crea un puntero a un DISPLAY y un BITMAP
-    //ALLEGRO_BITMAP *background=al_load_bitmap("/home/manuel/CLionProjects/interfaz/cover.png");
+    if(!al_init_image_addon()) {
+        al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+    }
+
+    // Crea un puntero a un BITMAP
+    ALLEGRO_BITMAP *bear=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/Bear.png");
+    ALLEGRO_BITMAP *yeti=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/Yeti.png");
+    ALLEGRO_BITMAP *seal=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/Seal.png");
+    ALLEGRO_BITMAP *penguin=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/Penguin.png");
+    ALLEGRO_BITMAP *button=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/startButton.png");
 
     //con esto se obtinene cual tecla es precionada en ese instante
     ALLEGRO_KEYBOARD_STATE keyState;
-
-    //cola de eventos
-    ALLEGRO_EVENT_QUEUE *event_queue=al_create_event_queue();
 
 
     al_set_new_display_flags(ALLEGRO_NOFRAME);
@@ -44,12 +51,12 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
     //al_set_window_position(frame,50,50);
     al_set_new_display_flags(ALLEGRO_NOFRAME);
 
-    al_init_primitives_addon();
-    if(!al_init_image_addon()) {
-        al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-    }
 
-    ALLEGRO_TIMER_EVENT *timer=al_create_timer(1.0/FPS);
+
+    ALLEGRO_TIMER *timer=al_create_timer(1.0/FPS);
+
+    //cola de eventos
+    ALLEGRO_EVENT_QUEUE *event_queue=al_create_event_queue();
 
     //registra la fuente del evento, recibe una cola de eventos y el tipo de evento
     al_register_event_source(event_queue,al_get_mouse_event_source());
@@ -63,9 +70,15 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
 
     int x=0, y=0;
 
-    ALLEGRO_COLOR Green=al_map_rgb(0,255,0);
-    ALLEGRO_COLOR Blue=al_map_rgb(0,0,255);
-    ALLEGRO_COLOR Red=al_map_rgb(255,0,0);
+    ALLEGRO_COLOR BearAvailable=al_map_rgb(0,255,0);
+    ALLEGRO_COLOR PenguinAvailable=al_map_rgb(0,255,0);
+    ALLEGRO_COLOR SealAvailable=al_map_rgb(0,255,0);
+    ALLEGRO_COLOR YetiAvailable=al_map_rgb(0,255,0);
+
+    ALLEGRO_COLOR BearSelected=al_map_rgb(255,0,0);
+    ALLEGRO_COLOR PenguinSelected=al_map_rgb(255,0,0);
+    ALLEGRO_COLOR SealSelected=al_map_rgb(255,0,0);
+    ALLEGRO_COLOR YetiSelected=al_map_rgb(255,0,0);
 
     //al_flip_display();
 
@@ -91,6 +104,7 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
                     break;
             }
         }
+
         else if(events.type==ALLEGRO_EVENT_MOUSE_AXES)
         {
             x=events.mouse.x;
@@ -100,37 +114,47 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
         else if(events.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
         {
             if(events.mouse.button & 1) {
-                if(x>300 & x<350 & y>200 & y<250){
-                    al_show_native_message_box(frame, "Error", "Error", "OSO!  0",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                if(x>100 & x<300 & y>50 & y<250){
+                    BearAvailable=BearSelected;
                     //enviarle al server cero
                 }
-                else if(x>370 & x<420 & y>270 & y<320){
-                    al_show_native_message_box(frame, "Error", "Error", "PINGUINO!  1",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                else if(x>400 & x<600 & y>50 & y<250){
+                    PenguinAvailable=PenguinSelected;
                     //enviarle al server uno
                 }
-                else if(x>300 & x<350 & y>270 & y<320){
-                    al_show_native_message_box(frame, "Error", "Error", "YETI!  2",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                else if(x>100 & x<300 & y>300 & y<500){
+                    SealAvailable=SealSelected;
                     //enviarle al server dos
                 }
-                else if(x>370 & x<420 & y>200 & y<250){
-                    al_show_native_message_box(frame, "Error", "Error", "FOCA!  3",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                else if(x>400 & x<600 & y>300 & y<500){
+                    YetiAvailable=YetiSelected;
                     //enviarle al server tres
                 }
-                else if(x>310 & x<415 & y>410 & y<440){
-                    al_show_native_message_box(frame, "Error", "Error", "COMENZAR!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                }
 
+
+                else if(x>800 & x<1050 & y>150 & y<400){
+                    al_show_native_message_box(frame, "EXCELENTE", "FUNCIONA", "COMENZAR!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                }
             }
         }
 
 
         //al_draw_bitmap(background,0,0,0);
-        al_draw_filled_rectangle(300,200,350,250,Green);
-        al_draw_filled_rectangle(370,270,420,320,Blue);
-        al_draw_filled_rectangle(300,270,350,320,Blue);
-        al_draw_filled_rectangle(370,200,420,250,Green);
 
-        al_draw_filled_rectangle(310,410,415,440,Red);
+        al_draw_bitmap(bear,100,50,0);
+        al_draw_rectangle(100,50,300,250,BearAvailable,10);
+
+        al_draw_bitmap(penguin,400,50,0);
+        al_draw_rectangle(400,50,600,250,PenguinAvailable,10);
+
+        al_draw_bitmap(seal,100,300,0);
+        al_draw_rectangle(100,300,300,500,SealAvailable,10);
+
+        al_draw_bitmap(yeti,400,300,0);
+        al_draw_rectangle(400,300,600,500,YetiAvailable,10);
+
+        al_draw_bitmap(button,800,150,0);
+
         al_flip_display();
         al_clear_to_color(al_map_rgb(0,0,0));
 

@@ -6,21 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/manuel/CLionProjects/interfaz/prueba.c
+/home/manuel/CLionProjects/interfaz/GameMode.c
+GameMode.h
+/home/manuel/CLionProjects/interfaz/GameMode.h
 allegro5/haptic.h
 -
-allegro5/events.h
+allegro5/allegro_native_dialog.h
 -
-allegro5/timer.h
+allegro5/allegro_image.h
 -
-allegro5/system.h
+allegro5/allegro_primitives.h
 -
-stdio.h
--
-allegro5/allegro.h
--
-prueba.h
-/home/manuel/CLionProjects/interfaz/prueba.h
 
-/home/manuel/CLionProjects/interfaz/prueba.h
+/home/manuel/CLionProjects/interfaz/GameMode.h
+allegro5/haptic.h
+-
 

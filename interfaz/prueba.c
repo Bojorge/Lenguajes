@@ -266,6 +266,8 @@ int initGame() {
     return 0;
 }
 
+/*
 int main(){
     initGame();
 }
+ */

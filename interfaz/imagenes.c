@@ -1,8 +1,8 @@
 //
 // Created by manuel on 11/11/19.
 //
-
 /*
+
 
 #include <allegro5/allegro.h>
 //#include <allegro5/allegro_primitives.h>
@@ -16,6 +16,8 @@
 #define  ScreenHeight 600
 
 
+
+
 // x, y son las coordenadas de player. ex, ey las del enemigo
 bool Collision(float x, float y, float ex, float ey,int width, int height){
 
@@ -27,7 +29,7 @@ bool Collision(float x, float y, float ex, float ey,int width, int height){
 }
 
 
-int start() {
+int main() {
 
     int playerWidtth=0;
     int playerHeight=0;
@@ -121,8 +123,8 @@ int start() {
         return 0;
     }
 
-    player = al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
-    player2= al_load_bitmap("/home/manuel/CLionProjects/interfaz/a.png");
+    player = al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/a.png");
+    player2= al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/a.png");
     playerWidtth=al_get_bitmap_width(player);
     playerHeight=al_get_bitmap_height(player);
 

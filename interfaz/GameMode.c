@@ -49,7 +49,11 @@ int selectMode(ALLEGRO_DISPLAY* frame){
         al_show_native_message_box(frame, "Error", "Error", "Failed to initialize al_init_image_addon!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
     }
 
-    ALLEGRO_TIMER_EVENT *timer=al_create_timer(1.0/FPS);
+    ALLEGRO_BITMAP *screenMP=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/screenMP.png");
+    ALLEGRO_BITMAP *localMP=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/localMP.png");
+    ALLEGRO_BITMAP *onlineMP=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/onlineMP.png");
+
+    ALLEGRO_TIMER *timer=al_create_timer(1.0/FPS);
 
     //registra la fuente del evento, recibe una cola de eventos y el tipo de evento
     al_register_event_source(event_queue,al_get_mouse_event_source());
@@ -100,15 +104,15 @@ int selectMode(ALLEGRO_DISPLAY* frame){
         else if(events.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
         {
             if(events.mouse.button & 1) {
-                if(x>400 & x<450 & y>200 & y<250){
+                if(x>390 & x<810 & y>200 & y<250){
                     al_show_native_message_box(frame, "Error", "Error", "MODO 1",NULL, ALLEGRO_MESSAGEBOX_ERROR);
                     //enviarle al server cero
                 }
-                else if(x>400 & x<450 & y>270 & y<320){
+                else if(x>390 & x<810 & y>270 & y<320){
                     al_show_native_message_box(frame, "Error", "Error", "MODO 2",NULL, ALLEGRO_MESSAGEBOX_ERROR);
                     //enviarle al server uno
                 }
-                else if(x>400 & x<450 & y>340 & y<390){
+                else if(x>390 & x<810 & y>340 & y<390){
                     al_show_native_message_box(frame, "Error", "Error", "MODO 3",NULL, ALLEGRO_MESSAGEBOX_ERROR);
                     //enviarle al server dos
                 }
@@ -116,10 +120,9 @@ int selectMode(ALLEGRO_DISPLAY* frame){
         }
 
 
-        //al_draw_bitmap(background,0,0,0);
-        al_draw_filled_rectangle(400,200,450,250,Green);
-        al_draw_filled_rectangle(400,270,450,320,Red);
-        al_draw_filled_rectangle(400,340,450,390,Blue);
+        al_draw_bitmap(screenMP,390,50,0);
+        al_draw_bitmap(localMP,390,150,0);
+        al_draw_bitmap(onlineMP,390,250,0);
 
         al_flip_display();
         al_clear_to_color(al_map_rgb(0,0,0));

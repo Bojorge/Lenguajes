@@ -27,6 +27,7 @@ bool Collision(float x, float y, float ex, float ey,int width, int height){
 }
 
 
+
 int start(ALLEGRO_DISPLAY* frame) {
 
     int playerWidtth=0;
