@@ -7,11 +7,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/manuel/CLionProjects/interfaz/GameMode.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/GameMode.c.o"
   "/home/manuel/CLionProjects/interfaz/SelectEnemies.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/SelectEnemies.c.o"
   "/home/manuel/CLionProjects/interfaz/WaitingRoom.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/WaitingRoom.c.o"
-  "/home/manuel/CLionProjects/interfaz/game.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/game.c.o"
-  "/home/manuel/CLionProjects/interfaz/imagenes.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/imagenes.c.o"
+  "/home/manuel/CLionProjects/interfaz/game1p.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/game1p.c.o"
   "/home/manuel/CLionProjects/interfaz/initFrame.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/initFrame.c.o"
   "/home/manuel/CLionProjects/interfaz/main.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/main.c.o"
-  "/home/manuel/CLionProjects/interfaz/movimiento.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/movimiento.c.o"
   "/home/manuel/CLionProjects/interfaz/prueba.c" "/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles/interfaz.dir/prueba.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

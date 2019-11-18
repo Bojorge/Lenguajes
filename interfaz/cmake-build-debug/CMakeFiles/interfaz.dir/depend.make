@@ -6,25 +6,21 @@ CMakeFiles/interfaz.dir/GameMode.c.o: ../GameMode.h
 
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../SelectEnemies.c
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../SelectEnemies.h
+CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../game1p.h
 
 CMakeFiles/interfaz.dir/WaitingRoom.c.o: ../SelectEnemies.h
 CMakeFiles/interfaz.dir/WaitingRoom.c.o: ../WaitingRoom.c
 CMakeFiles/interfaz.dir/WaitingRoom.c.o: ../WaitingRoom.h
 
-CMakeFiles/interfaz.dir/game.c.o: ../game.c
-CMakeFiles/interfaz.dir/game.c.o: ../game.h
-
-CMakeFiles/interfaz.dir/imagenes.c.o: ../imagenes.c
+CMakeFiles/interfaz.dir/game1p.c.o: ../game1p.c
+CMakeFiles/interfaz.dir/game1p.c.o: ../game1p.h
 
 CMakeFiles/interfaz.dir/initFrame.c.o: ../GameMode.h
 CMakeFiles/interfaz.dir/initFrame.c.o: ../SelectEnemies.h
-CMakeFiles/interfaz.dir/initFrame.c.o: ../WaitingRoom.h
-CMakeFiles/interfaz.dir/initFrame.c.o: ../game.h
 CMakeFiles/interfaz.dir/initFrame.c.o: ../initFrame.c
 
+CMakeFiles/interfaz.dir/main.c.o: ../initFrame.h
 CMakeFiles/interfaz.dir/main.c.o: ../main.c
-
-CMakeFiles/interfaz.dir/movimiento.c.o: ../movimiento.c
 
 CMakeFiles/interfaz.dir/prueba.c.o: ../prueba.c
 CMakeFiles/interfaz.dir/prueba.c.o: ../prueba.h

@@ -7,6 +7,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include "SelectEnemies.h"
+#include "game1p.h"
 
 
 int displayEnemies(ALLEGRO_DISPLAY* frame){
@@ -132,8 +133,8 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
                 }
 
 
-                else if(x>800 & x<1050 & y>150 & y<400){
-                    al_show_native_message_box(frame, "EXCELENTE", "FUNCIONA", "COMENZAR!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
+                else if(x>800 & x<1050 & y>150 & y<400){ //si el boton de inicio es precionado, comienza el juego
+                    done=true;
                 }
             }
         }
@@ -166,6 +167,8 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
     al_destroy_event_queue(event_queue);
     //elimina el timer
     al_destroy_timer(timer);
+
+    play1(frame);
     //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
     al_destroy_display(frame);
 

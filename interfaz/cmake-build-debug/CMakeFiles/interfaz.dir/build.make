@@ -70,35 +70,9 @@ CMakeFiles/interfaz.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/main.c -o CMakeFiles/interfaz.dir/main.c.s
 
-CMakeFiles/interfaz.dir/imagenes.c.o: CMakeFiles/interfaz.dir/flags.make
-CMakeFiles/interfaz.dir/imagenes.c.o: ../imagenes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/interfaz.dir/imagenes.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/imagenes.c.o   -c /home/manuel/CLionProjects/interfaz/imagenes.c
-
-CMakeFiles/interfaz.dir/imagenes.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/interfaz.dir/imagenes.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/manuel/CLionProjects/interfaz/imagenes.c > CMakeFiles/interfaz.dir/imagenes.c.i
-
-CMakeFiles/interfaz.dir/imagenes.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/imagenes.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/imagenes.c -o CMakeFiles/interfaz.dir/imagenes.c.s
-
-CMakeFiles/interfaz.dir/movimiento.c.o: CMakeFiles/interfaz.dir/flags.make
-CMakeFiles/interfaz.dir/movimiento.c.o: ../movimiento.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/interfaz.dir/movimiento.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/movimiento.c.o   -c /home/manuel/CLionProjects/interfaz/movimiento.c
-
-CMakeFiles/interfaz.dir/movimiento.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/interfaz.dir/movimiento.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/manuel/CLionProjects/interfaz/movimiento.c > CMakeFiles/interfaz.dir/movimiento.c.i
-
-CMakeFiles/interfaz.dir/movimiento.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/movimiento.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/movimiento.c -o CMakeFiles/interfaz.dir/movimiento.c.s
-
 CMakeFiles/interfaz.dir/initFrame.c.o: CMakeFiles/interfaz.dir/flags.make
 CMakeFiles/interfaz.dir/initFrame.c.o: ../initFrame.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/interfaz.dir/initFrame.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/interfaz.dir/initFrame.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/initFrame.c.o   -c /home/manuel/CLionProjects/interfaz/initFrame.c
 
 CMakeFiles/interfaz.dir/initFrame.c.i: cmake_force
@@ -109,22 +83,9 @@ CMakeFiles/interfaz.dir/initFrame.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/initFrame.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/initFrame.c -o CMakeFiles/interfaz.dir/initFrame.c.s
 
-CMakeFiles/interfaz.dir/game.c.o: CMakeFiles/interfaz.dir/flags.make
-CMakeFiles/interfaz.dir/game.c.o: ../game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/interfaz.dir/game.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/game.c.o   -c /home/manuel/CLionProjects/interfaz/game.c
-
-CMakeFiles/interfaz.dir/game.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/interfaz.dir/game.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/manuel/CLionProjects/interfaz/game.c > CMakeFiles/interfaz.dir/game.c.i
-
-CMakeFiles/interfaz.dir/game.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/game.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/game.c -o CMakeFiles/interfaz.dir/game.c.s
-
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: CMakeFiles/interfaz.dir/flags.make
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../SelectEnemies.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/interfaz.dir/SelectEnemies.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/interfaz.dir/SelectEnemies.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/SelectEnemies.c.o   -c /home/manuel/CLionProjects/interfaz/SelectEnemies.c
 
 CMakeFiles/interfaz.dir/SelectEnemies.c.i: cmake_force
@@ -137,7 +98,7 @@ CMakeFiles/interfaz.dir/SelectEnemies.c.s: cmake_force
 
 CMakeFiles/interfaz.dir/GameMode.c.o: CMakeFiles/interfaz.dir/flags.make
 CMakeFiles/interfaz.dir/GameMode.c.o: ../GameMode.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/interfaz.dir/GameMode.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/interfaz.dir/GameMode.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/GameMode.c.o   -c /home/manuel/CLionProjects/interfaz/GameMode.c
 
 CMakeFiles/interfaz.dir/GameMode.c.i: cmake_force
@@ -150,7 +111,7 @@ CMakeFiles/interfaz.dir/GameMode.c.s: cmake_force
 
 CMakeFiles/interfaz.dir/WaitingRoom.c.o: CMakeFiles/interfaz.dir/flags.make
 CMakeFiles/interfaz.dir/WaitingRoom.c.o: ../WaitingRoom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/interfaz.dir/WaitingRoom.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/interfaz.dir/WaitingRoom.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/WaitingRoom.c.o   -c /home/manuel/CLionProjects/interfaz/WaitingRoom.c
 
 CMakeFiles/interfaz.dir/WaitingRoom.c.i: cmake_force
@@ -163,7 +124,7 @@ CMakeFiles/interfaz.dir/WaitingRoom.c.s: cmake_force
 
 CMakeFiles/interfaz.dir/prueba.c.o: CMakeFiles/interfaz.dir/flags.make
 CMakeFiles/interfaz.dir/prueba.c.o: ../prueba.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/interfaz.dir/prueba.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/interfaz.dir/prueba.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/prueba.c.o   -c /home/manuel/CLionProjects/interfaz/prueba.c
 
 CMakeFiles/interfaz.dir/prueba.c.i: cmake_force
@@ -174,33 +135,42 @@ CMakeFiles/interfaz.dir/prueba.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/prueba.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/prueba.c -o CMakeFiles/interfaz.dir/prueba.c.s
 
+CMakeFiles/interfaz.dir/game1p.c.o: CMakeFiles/interfaz.dir/flags.make
+CMakeFiles/interfaz.dir/game1p.c.o: ../game1p.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/interfaz.dir/game1p.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/interfaz.dir/game1p.c.o   -c /home/manuel/CLionProjects/interfaz/game1p.c
+
+CMakeFiles/interfaz.dir/game1p.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/interfaz.dir/game1p.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/manuel/CLionProjects/interfaz/game1p.c > CMakeFiles/interfaz.dir/game1p.c.i
+
+CMakeFiles/interfaz.dir/game1p.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/interfaz.dir/game1p.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/manuel/CLionProjects/interfaz/game1p.c -o CMakeFiles/interfaz.dir/game1p.c.s
+
 # Object files for target interfaz
 interfaz_OBJECTS = \
 "CMakeFiles/interfaz.dir/main.c.o" \
-"CMakeFiles/interfaz.dir/imagenes.c.o" \
-"CMakeFiles/interfaz.dir/movimiento.c.o" \
 "CMakeFiles/interfaz.dir/initFrame.c.o" \
-"CMakeFiles/interfaz.dir/game.c.o" \
 "CMakeFiles/interfaz.dir/SelectEnemies.c.o" \
 "CMakeFiles/interfaz.dir/GameMode.c.o" \
 "CMakeFiles/interfaz.dir/WaitingRoom.c.o" \
-"CMakeFiles/interfaz.dir/prueba.c.o"
+"CMakeFiles/interfaz.dir/prueba.c.o" \
+"CMakeFiles/interfaz.dir/game1p.c.o"
 
 # External object files for target interfaz
 interfaz_EXTERNAL_OBJECTS =
 
 interfaz: CMakeFiles/interfaz.dir/main.c.o
-interfaz: CMakeFiles/interfaz.dir/imagenes.c.o
-interfaz: CMakeFiles/interfaz.dir/movimiento.c.o
 interfaz: CMakeFiles/interfaz.dir/initFrame.c.o
-interfaz: CMakeFiles/interfaz.dir/game.c.o
 interfaz: CMakeFiles/interfaz.dir/SelectEnemies.c.o
 interfaz: CMakeFiles/interfaz.dir/GameMode.c.o
 interfaz: CMakeFiles/interfaz.dir/WaitingRoom.c.o
 interfaz: CMakeFiles/interfaz.dir/prueba.c.o
+interfaz: CMakeFiles/interfaz.dir/game1p.c.o
 interfaz: CMakeFiles/interfaz.dir/build.make
 interfaz: CMakeFiles/interfaz.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable interfaz"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/manuel/CLionProjects/interfaz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable interfaz"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/interfaz.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -6,19 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/manuel/CLionProjects/interfaz/GameMode.c
-GameMode.h
 /home/manuel/CLionProjects/interfaz/GameMode.h
 allegro5/haptic.h
 -
-allegro5/allegro_native_dialog.h
+
+/home/manuel/CLionProjects/interfaz/SelectEnemies.h
+
+/home/manuel/CLionProjects/interfaz/initFrame.c
+allegro5/allegro.h
 -
 allegro5/allegro_image.h
 -
+allegro5/allegro_native_dialog.h
+-
+allegro5/bitmap.h
+-
 allegro5/allegro_primitives.h
 -
-
+SelectEnemies.h
+/home/manuel/CLionProjects/interfaz/SelectEnemies.h
+GameMode.h
 /home/manuel/CLionProjects/interfaz/GameMode.h
-allegro5/haptic.h
--
 

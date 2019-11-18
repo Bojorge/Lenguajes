@@ -3,7 +3,7 @@ project(interfaz C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(interfaz main.c imagenes.c imgs.cpp movimiento.c initFrame.c game.c game.h SelectEnemies.c SelectEnemies.h GameMode.c GameMode.h WaitingRoom.c WaitingRoom.h prueba.c prueba.h)
+add_executable(interfaz main.c initFrame.c SelectEnemies.c SelectEnemies.h GameMode.c GameMode.h WaitingRoom.c WaitingRoom.h prueba.c prueba.h game1p.c game1p.h initFrame.h)
 
 
 INCLUDE_DIRECTORIES( allegro/5.0.11/include )

@@ -9,17 +9,15 @@
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/bitmap.h>
 #include <allegro5/allegro_primitives.h>
-#include "game.h"
 #include "SelectEnemies.h"
 #include "GameMode.h"
-#include "WaitingRoom.h"
 
 
 #define ScreenWidth 1200
 #define  ScreenHeight 600
 
 
-int main(){
+int initFrame(){
 
     const float FPS=60.0;
 
@@ -78,11 +76,11 @@ int main(){
 
     int x=0, y=0;
 
-    bool done=false;
+    bool done=false,one=false,two=false;
 
     al_start_timer(timer);
 
-    while(!done) {
+    while(!done && !one && !two) {
         //instancia un nuevo evento
         ALLEGRO_EVENT events;
         //funcion que esta a la escucha de algun evento
@@ -109,11 +107,11 @@ int main(){
             if(events.mouse.button & 1) {
                 //Si el juego es para 1 jugador se va a la pantalla de seleccionar enemigos
                 if(x>412 & x<819 & y>352 & y<380){
-                    displayEnemies(display);
+                    one=true;
                 }
                 //AQUI VAN LAS OPCIONES SI SE SELECCIONAN 2 JUGADORES
                 else if(x>412 & x<819 & y>404 & y<431){
-                    selectMode(display);
+                    two=true;
                 }
             }
         }
@@ -135,6 +133,12 @@ int main(){
     al_destroy_bitmap(background);
     //elimina el timer
     al_destroy_timer(timer);
+
+    if(one)
+        displayEnemies(display);
+    if(two)
+        selectMode(display);
+
     //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
     al_destroy_display(display);
 

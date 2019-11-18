@@ -204,59 +204,32 @@ WaitingRoom.c.s:
 	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/WaitingRoom.c.s
 .PHONY : WaitingRoom.c.s
 
-game.o: game.c.o
+game1p.o: game1p.c.o
 
-.PHONY : game.o
-
-# target to build an object file
-game.c.o:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game.c.o
-.PHONY : game.c.o
-
-game.i: game.c.i
-
-.PHONY : game.i
-
-# target to preprocess a source file
-game.c.i:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game.c.i
-.PHONY : game.c.i
-
-game.s: game.c.s
-
-.PHONY : game.s
-
-# target to generate assembly for a file
-game.c.s:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game.c.s
-.PHONY : game.c.s
-
-imagenes.o: imagenes.c.o
-
-.PHONY : imagenes.o
+.PHONY : game1p.o
 
 # target to build an object file
-imagenes.c.o:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/imagenes.c.o
-.PHONY : imagenes.c.o
+game1p.c.o:
+	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game1p.c.o
+.PHONY : game1p.c.o
 
-imagenes.i: imagenes.c.i
+game1p.i: game1p.c.i
 
-.PHONY : imagenes.i
+.PHONY : game1p.i
 
 # target to preprocess a source file
-imagenes.c.i:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/imagenes.c.i
-.PHONY : imagenes.c.i
+game1p.c.i:
+	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game1p.c.i
+.PHONY : game1p.c.i
 
-imagenes.s: imagenes.c.s
+game1p.s: game1p.c.s
 
-.PHONY : imagenes.s
+.PHONY : game1p.s
 
 # target to generate assembly for a file
-imagenes.c.s:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/imagenes.c.s
-.PHONY : imagenes.c.s
+game1p.c.s:
+	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/game1p.c.s
+.PHONY : game1p.c.s
 
 initFrame.o: initFrame.c.o
 
@@ -312,33 +285,6 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/main.c.s
 .PHONY : main.c.s
 
-movimiento.o: movimiento.c.o
-
-.PHONY : movimiento.o
-
-# target to build an object file
-movimiento.c.o:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/movimiento.c.o
-.PHONY : movimiento.c.o
-
-movimiento.i: movimiento.c.i
-
-.PHONY : movimiento.i
-
-# target to preprocess a source file
-movimiento.c.i:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/movimiento.c.i
-.PHONY : movimiento.c.i
-
-movimiento.s: movimiento.c.s
-
-.PHONY : movimiento.s
-
-# target to generate assembly for a file
-movimiento.c.s:
-	$(MAKE) -f CMakeFiles/interfaz.dir/build.make CMakeFiles/interfaz.dir/movimiento.c.s
-.PHONY : movimiento.c.s
-
 prueba.o: prueba.c.o
 
 .PHONY : prueba.o
@@ -384,21 +330,15 @@ help:
 	@echo "... WaitingRoom.o"
 	@echo "... WaitingRoom.i"
 	@echo "... WaitingRoom.s"
-	@echo "... game.o"
-	@echo "... game.i"
-	@echo "... game.s"
-	@echo "... imagenes.o"
-	@echo "... imagenes.i"
-	@echo "... imagenes.s"
+	@echo "... game1p.o"
+	@echo "... game1p.i"
+	@echo "... game1p.s"
 	@echo "... initFrame.o"
 	@echo "... initFrame.i"
 	@echo "... initFrame.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... movimiento.o"
-	@echo "... movimiento.i"
-	@echo "... movimiento.s"
 	@echo "... prueba.o"
 	@echo "... prueba.i"
 	@echo "... prueba.s"

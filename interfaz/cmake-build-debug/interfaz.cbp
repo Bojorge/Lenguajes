@@ -104,25 +104,19 @@
 		<Unit filename="/home/manuel/CLionProjects/interfaz/WaitingRoom.h">
 			<Option target="interfaz"/>
 		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/game.c">
+		<Unit filename="/home/manuel/CLionProjects/interfaz/game1p.c">
 			<Option target="interfaz"/>
 		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/game.h">
-			<Option target="interfaz"/>
-		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/imagenes.c">
-			<Option target="interfaz"/>
-		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/imgs.cpp">
+		<Unit filename="/home/manuel/CLionProjects/interfaz/game1p.h">
 			<Option target="interfaz"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/interfaz/initFrame.c">
 			<Option target="interfaz"/>
 		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/main.c">
+		<Unit filename="/home/manuel/CLionProjects/interfaz/initFrame.h">
 			<Option target="interfaz"/>
 		</Unit>
-		<Unit filename="/home/manuel/CLionProjects/interfaz/movimiento.c">
+		<Unit filename="/home/manuel/CLionProjects/interfaz/main.c">
 			<Option target="interfaz"/>
 		</Unit>
 		<Unit filename="/home/manuel/CLionProjects/interfaz/prueba.c">
