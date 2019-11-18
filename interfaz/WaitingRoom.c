@@ -30,7 +30,11 @@ int waiting(ALLEGRO_DISPLAY* frame){
     al_init_image_addon();
 
     // Crea un puntero a un DISPLAY y un BITMAP
-    //ALLEGRO_BITMAP *background=al_load_bitmap("/home/manuel/CLionProjects/interfaz/cover.png");
+    ALLEGRO_BITMAP *p1=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/p1.png");
+    ALLEGRO_BITMAP *p2=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/p2.png");
+    ALLEGRO_BITMAP *waiting=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/waiting.png");
+    ALLEGRO_BITMAP *connected=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/connected.png");
+    ALLEGRO_BITMAP *choose=al_load_bitmap("/home/manuel/CLionProjects/interfaz/imgs/choose.png");
 
     //con esto se obtinene cual tecla es precionada en ese instante
     ALLEGRO_KEYBOARD_STATE keyState;
@@ -65,14 +69,6 @@ int waiting(ALLEGRO_DISPLAY* frame){
 
     int x=0, y=0;
 
-    ALLEGRO_COLOR Green=al_map_rgb(0,255,0);
-    ALLEGRO_COLOR Blue=al_map_rgb(0,0,255);
-    ALLEGRO_COLOR Red=al_map_rgb(255,0,0);
-
-    //al_flip_display();
-
-    //al_hide_mouse_cursor(frame);
-
     bool done=false;
 
     al_start_timer(timer);
@@ -86,13 +82,11 @@ int waiting(ALLEGRO_DISPLAY* frame){
         al_wait_for_event(event_queue,&events);
         //al_get_keyboard_state(&keyState);
 
-        if(events.type==ALLEGRO_EVENT_KEY_UP) {
-            switch (events.keyboard.keycode) {
-                case ALLEGRO_KEY_ESCAPE:
-                    done=true;
-                    break;
-            }
+        if(events.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            done=true;
+            break;
         }
+
         else if(events.type==ALLEGRO_EVENT_MOUSE_AXES)
         {
             x=events.mouse.x;
@@ -102,40 +96,21 @@ int waiting(ALLEGRO_DISPLAY* frame){
         else if(events.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
         {
             if(events.mouse.button & 1) {
-                if(x>300 & x<350 & y>200 & y<250){
-                    al_show_native_message_box(frame, "Error", "Error", "OSO!  0",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                    //enviarle al server cero
+                if(x>900 & x<1100 & y>150 & y<350){
+                    displayEnemies(frame);
                 }
-                else if(x>370 & x<420 & y>270 & y<320){
-                    al_show_native_message_box(frame, "Error", "Error", "PINGUINO!  1",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                    //enviarle al server uno
-                }
-                else if(x>300 & x<350 & y>270 & y<320){
-                    al_show_native_message_box(frame, "Error", "Error", "YETI!  2",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                    //enviarle al server dos
-                }
-                else if(x>370 & x<420 & y>200 & y<250){
-                    al_show_native_message_box(frame, "Error", "Error", "FOCA!  3",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                    //enviarle al server tres
-                }
-                else if(x>310 & x<415 & y>410 & y<440){
-                    al_show_native_message_box(frame, "Error", "Error", "COMENZAR!",NULL, ALLEGRO_MESSAGEBOX_ERROR);
-                }
-
             }
         }
 
+        al_draw_bitmap(p1,100,100,0);
+        al_draw_bitmap(p2,100,350,0);
+        al_draw_bitmap(waiting,400,50,0);
+        al_draw_bitmap(connected,400,300,0);
+        al_draw_bitmap(choose,900,150,0);
 
-        //al_draw_bitmap(background,0,0,0);
-        al_draw_filled_rectangle(310,110,415,140,Red);
 
 
-        al_draw_filled_rectangle(300,200,350,250,Green);
-        al_draw_filled_rectangle(370,270,420,320,Blue);
-        al_draw_filled_rectangle(300,270,350,320,Blue);
-        al_draw_filled_rectangle(370,200,420,250,Green);
 
-        al_draw_filled_rectangle(310,410,415,440,Red);
         al_flip_display();
         al_clear_to_color(al_map_rgb(0,0,0));
 
@@ -147,8 +122,12 @@ int waiting(ALLEGRO_DISPLAY* frame){
     al_destroy_event_queue(event_queue);
     //elimina el timer
     al_destroy_timer(timer);
-    //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
-    al_destroy_display(frame);
+
+    if(done){
+        //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
+        al_destroy_display(frame);
+    }
+
 
     return 0;
 

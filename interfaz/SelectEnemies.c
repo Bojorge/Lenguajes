@@ -85,25 +85,22 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
 
     //al_hide_mouse_cursor(frame);
 
-    bool done=false;
+    bool done=false,start=false;
 
     al_start_timer(timer);
 
 
 
-    while(!done) {
+    while(!done || !start) {
         //instancia un nuevo evento
         ALLEGRO_EVENT events;
         //funcion que esta a la escucha de algun evento
         al_wait_for_event(event_queue,&events);
         //al_get_keyboard_state(&keyState);
 
-        if(events.type==ALLEGRO_EVENT_KEY_UP) {
-            switch (events.keyboard.keycode) {
-                case ALLEGRO_KEY_ESCAPE:
-                    done=true;
-                    break;
-            }
+        if(events.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            done=true;
+            break;
         }
 
         else if(events.type==ALLEGRO_EVENT_MOUSE_AXES)
@@ -134,13 +131,11 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
 
 
                 else if(x>800 & x<1050 & y>150 & y<400){ //si el boton de inicio es precionado, comienza el juego
-                    done=true;
+                    start=true;
+                    break;
                 }
             }
         }
-
-
-        //al_draw_bitmap(background,0,0,0);
 
         al_draw_bitmap(bear,100,50,0);
         al_draw_rectangle(100,50,300,250,BearAvailable,10);
@@ -159,8 +154,6 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
         al_flip_display();
         al_clear_to_color(al_map_rgb(0,0,0));
 
-
-
     }
 
     //elimina la cola de eventos
@@ -168,9 +161,11 @@ int displayEnemies(ALLEGRO_DISPLAY* frame){
     //elimina el timer
     al_destroy_timer(timer);
 
-    play1(frame);
-    //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
-    al_destroy_display(frame);
+    if(start)
+        play1(frame);
+    if(done)
+        //elimina el contenido bajo el puntero de ventana, esto eliminará a la ventana de la memoria.
+        al_destroy_display(frame);
 
     return 0;
 

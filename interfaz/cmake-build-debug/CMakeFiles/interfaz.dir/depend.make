@@ -3,6 +3,7 @@
 
 CMakeFiles/interfaz.dir/GameMode.c.o: ../GameMode.c
 CMakeFiles/interfaz.dir/GameMode.c.o: ../GameMode.h
+CMakeFiles/interfaz.dir/GameMode.c.o: ../WaitingRoom.h
 
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../SelectEnemies.c
 CMakeFiles/interfaz.dir/SelectEnemies.c.o: ../SelectEnemies.h

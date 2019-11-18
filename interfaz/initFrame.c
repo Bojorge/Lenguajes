@@ -87,39 +87,31 @@ int initFrame(){
         al_wait_for_event(event_queue,&events);
         //al_get_keyboard_state(&keyState);
 
-        if(events.type==ALLEGRO_EVENT_KEY_UP) {
-            switch (events.keyboard.keycode) {
-                case ALLEGRO_KEY_ESCAPE:
-                    done=true;
-                    break;
-            }
+        if(events.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            done=true;
+            break;
         }
 
-
-        if(events.type==ALLEGRO_EVENT_MOUSE_AXES)
+        else if(events.type==ALLEGRO_EVENT_MOUSE_AXES)
         {
             x=events.mouse.x;
             y=events.mouse.y;
         }
-
-        if(events.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+        else if(events.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
         {
             if(events.mouse.button & 1) {
                 //Si el juego es para 1 jugador se va a la pantalla de seleccionar enemigos
                 if(x>412 & x<819 & y>352 & y<380){
                     one=true;
+                    break;
                 }
-                //AQUI VAN LAS OPCIONES SI SE SELECCIONAN 2 JUGADORES
+                    //AQUI VAN LAS OPCIONES SI SE SELECCIONAN 2 JUGADORES
                 else if(x>412 & x<819 & y>404 & y<431){
                     two=true;
+                    break;
                 }
             }
         }
-
-
-
-
-
 
         al_draw_bitmap(background,0,0,0);
         //al_draw_filled_rectangle(x,y,x+20,y+20,Green);
