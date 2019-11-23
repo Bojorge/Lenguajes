@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Game.h
+allegro5/haptic.h
+-
+
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Json.h
+
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Socket.h
+
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Sources/ICE_Game.c
+../ICE_Headers/ICE_Game.h
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Game.h
+allegro5/allegro.h
+-
+allegro5/allegro_image.h
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Sources/allegro5/allegro_image.h
+allegro5/allegro_audio.h
+-
+allegro5/allegro_font.h
+-
+allegro5/allegro_ttf.h
+-
+allegro5/allegro_acodec.h
+-
+allegro5/allegro_native_dialog.h
+-
+allegro5/allegro_primitives.h
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Sources/allegro5/allegro_primitives.h
+stdio.h
+-
+../ICE_Headers/ICE_Json.h
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Json.h
+../ICE_Headers/ICE_Socket.h
+/home/manuel/Descargas/ICE_Climber/ICE_Client/ICE_Headers/ICE_Socket.h
+
