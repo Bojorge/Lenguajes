@@ -112,7 +112,7 @@ void animateEnemy(ALLEGRO_BITMAP *dino, float dinoPosition[] ,float dinoAnimatio
 //****************WINNER***************
 int winnerScene(ALLEGRO_DISPLAY *display,int popoBears,int nanaBears,int popoSeals,int nanaSeals,int popoPenguins,int nanaPenguins,int popoYetis,int nanaYetis){
     //al_clear_to_color(al_map_rgb(0,0,0));
-                                            
+
     ALLEGRO_BITMAP *score = al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/score.png");
     ALLEGRO_BITMAP *zero=al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/zero.png");
     ALLEGRO_BITMAP *one=al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/one.png");
@@ -125,12 +125,10 @@ int winnerScene(ALLEGRO_DISPLAY *display,int popoBears,int nanaBears,int popoSea
     ALLEGRO_BITMAP *eight=al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/eight.png");
     ALLEGRO_BITMAP *nine=al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/nine.png");
     ALLEGRO_BITMAP *plusTen=al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/plusTen.png");
-
-
-    ALLEGRO_BITMAP *popoWinner = al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/popoWinner.png");
+    ALLEGRO_BITMAP *popWinner = al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/popoWinner.png");
     ALLEGRO_BITMAP *nanaWinner = al_load_bitmap("/home/manuel/Descargas/ICE_Climber/ICE_Client/_imgs/nanaWinner.png");
 
-    if(!score || !zero || !one || !two || !three || !four || !five || !six || !seven || !eight || !nine || !plusTen || popoWinner || nanaWinner){
+    if(!score || !zero || !one || !two || !three || !four || !five || !six || !seven || !eight || !nine || !plusTen  || !popWinner || !nanaWinner){
         al_show_native_message_box(display, "Error", "Error", "Fail to create label-number-score",NULL, ALLEGRO_MESSAGEBOX_ERROR);
 
     }
@@ -138,221 +136,223 @@ int winnerScene(ALLEGRO_DISPLAY *display,int popoBears,int nanaBears,int popoSea
 
 
     if((popoBears+popoSeals+popoYetis+popoPenguins) > (nanaBears+nanaSeals+nanaYetis+nanaPenguins)){
-        al_draw_bitmap(popoWinner,400,400,0);
+        al_draw_bitmap(popWinner,425,420,0);
     }
     else if((popoBears+popoSeals+popoYetis+popoPenguins) < (nanaBears+nanaSeals+nanaYetis+nanaPenguins)){
-        al_draw_bitmap(nanaWinner,400,400,0);
+        al_draw_bitmap(nanaWinner,425,420,0);
     }
-
+    else if((popoBears+popoSeals+popoYetis+popoPenguins) == (nanaBears+nanaSeals+nanaYetis+nanaPenguins)){
+        al_draw_bitmap(nanaWinner,425,420,0);
+    }
 
 ///////////////////// ENEMIES KILLED BY POPO ///////////////////
 
     if(popoBears >= 0){
         if(popoBears==0)
-            al_draw_bitmap(zero,100,100,0);
+            al_draw_bitmap(zero,220,140,0);
         if(popoBears==1)
-            al_draw_bitmap(one,100,100,0);
+            al_draw_bitmap(one,220,140,0);
         if(popoBears==2)
-            al_draw_bitmap(two,100,100,0);
+            al_draw_bitmap(two,220,140,0);
         if(popoBears==3)
-            al_draw_bitmap(three,100,100,0);
+            al_draw_bitmap(three,220,140,0);
         if(popoBears==4)
-            al_draw_bitmap(four,100,100,0);
+            al_draw_bitmap(four,220,140,0);
         if(popoBears==5)
-            al_draw_bitmap(five,100,100,0);
+            al_draw_bitmap(five,220,140,0);
         if(popoBears==6)
-            al_draw_bitmap(six,100,100,0);
+            al_draw_bitmap(six,220,140,0);
         if(popoBears==7)
-            al_draw_bitmap(seven,100,100,0);
+            al_draw_bitmap(seven,220,140,0);
         if(popoBears==8)
-            al_draw_bitmap(eight,100,100,0);
+            al_draw_bitmap(eight,220,140,0);
         if(popoBears==9)
-            al_draw_bitmap(nine,100,100,0);
+            al_draw_bitmap(nine,220,140,0);
         if(popoBears>=10)
-            al_draw_bitmap(plusTen,100,100,0);
+            al_draw_bitmap(plusTen,220,140,0);
+    }
+
+    if(popoPenguins >= 0){
+        if(popoPenguins==0)
+            al_draw_bitmap(zero,220,210,0);
+        if(popoPenguins==1)
+            al_draw_bitmap(one,220,210,0);
+        if(popoPenguins==2)
+            al_draw_bitmap(two,220,210,0);
+        if(popoPenguins==3)
+            al_draw_bitmap(three,220,210,0);
+        if(popoPenguins==4)
+            al_draw_bitmap(four,220,210,0);
+        if(popoPenguins==5)
+            al_draw_bitmap(five,220,210,0);
+        if(popoPenguins==6)
+            al_draw_bitmap(six,220,210,0);
+        if(popoPenguins==7)
+            al_draw_bitmap(seven,220,210,0);
+        if(popoPenguins==8)
+            al_draw_bitmap(eight,220,210,0);
+        if(popoPenguins==9)
+            al_draw_bitmap(nine,220,210,0);
+    }
+
+    if(popoSeals >= 0){
+        if(popoSeals==0)
+            al_draw_bitmap(zero,220,280,0);
+        if(popoSeals==1)
+            al_draw_bitmap(one,220,280,0);
+        if(popoSeals==2)
+            al_draw_bitmap(two,220,280,0);
+        if(popoSeals==3)
+            al_draw_bitmap(three,220,280,0);
+        if(popoSeals==4)
+            al_draw_bitmap(four,220,280,0);
+        if(popoSeals==5)
+            al_draw_bitmap(five,220,280,0);
+        if(popoSeals==6)
+            al_draw_bitmap(six,220,280,0);
+        if(popoSeals==7)
+            al_draw_bitmap(seven,220,280,0);
+        if(popoSeals==8)
+            al_draw_bitmap(eight,220,280,0);
+        if(popoSeals==9)
+            al_draw_bitmap(nine,220,280,0);
+        if(popoSeals>=10)
+            al_draw_bitmap(plusTen,220,280,0);
     }
 
 
     if(popoYetis >= 0){
         if(popoYetis==0)
-            al_draw_bitmap(zero,100,100,0);
+            al_draw_bitmap(zero,220,350,0);
         if(popoYetis==1)
-            al_draw_bitmap(one,100,100,0);
+            al_draw_bitmap(one,220,350,0);
         if(popoYetis==2)
-            al_draw_bitmap(two,100,100,0);
+            al_draw_bitmap(two,220,350,0);
         if(popoYetis==3)
-            al_draw_bitmap(three,100,100,0);
+            al_draw_bitmap(three,220,350,0);
         if(popoYetis==4)
-            al_draw_bitmap(four,100,100,0);
+            al_draw_bitmap(four,220,350,0);
         if(popoYetis==5)
-            al_draw_bitmap(five,100,100,0);
+            al_draw_bitmap(five,220,350,0);
         if(popoYetis==6)
-            al_draw_bitmap(six,100,100,0);
+            al_draw_bitmap(six,220,350,0);
         if(popoYetis==7)
-            al_draw_bitmap(seven,100,100,0);
+            al_draw_bitmap(seven,220,350,0);
         if(popoYetis==8)
-            al_draw_bitmap(eight,100,100,0);
+            al_draw_bitmap(eight,220,350,0);
         if(popoYetis==9)
-            al_draw_bitmap(nine,100,100,0);
+            al_draw_bitmap(nine,220,350,0);
         if(popoYetis>=10)
-            al_draw_bitmap(plusTen,100,100,0);
-    }
-
-
-    if(popoSeals >= 0){
-        if(popoSeals==0)
-            al_draw_bitmap(zero,100,100,0);
-        if(popoSeals==1)
-            al_draw_bitmap(one,100,100,0);
-        if(popoSeals==2)
-            al_draw_bitmap(two,100,100,0);
-        if(popoSeals==3)
-            al_draw_bitmap(three,100,100,0);
-        if(popoSeals==4)
-            al_draw_bitmap(four,100,100,0);
-        if(popoSeals==5)
-            al_draw_bitmap(five,100,100,0);
-        if(popoSeals==6)
-            al_draw_bitmap(six,100,100,0);
-        if(popoSeals==7)
-            al_draw_bitmap(seven,100,100,0);
-        if(popoSeals==8)
-            al_draw_bitmap(eight,100,100,0);
-        if(popoSeals==9)
-            al_draw_bitmap(nine,100,100,0);
-        if(popoSeals>=10)
-            al_draw_bitmap(plusTen,100,100,0);
+            al_draw_bitmap(plusTen,220,350,0);
     }
 
 
 
-    if(popoPenguins >= 0){
-        if(popoPenguins==0)
-            al_draw_bitmap(zero,100,100,0);
-        if(popoPenguins==1)
-            al_draw_bitmap(one,100,100,0);
-        if(popoPenguins==2)
-            al_draw_bitmap(two,100,100,0);
-        if(popoPenguins==3)
-            al_draw_bitmap(three,100,100,0);
-        if(popoPenguins==4)
-            al_draw_bitmap(four,100,100,0);
-        if(popoPenguins==5)
-            al_draw_bitmap(five,100,100,0);
-        if(popoPenguins==6)
-            al_draw_bitmap(six,100,100,0);
-        if(popoPenguins==7)
-            al_draw_bitmap(seven,100,100,0);
-        if(popoPenguins==8)
-            al_draw_bitmap(eight,100,100,0);
-        if(popoPenguins==9)
-            al_draw_bitmap(nine,100,100,0);
-    }
 
 ///////////////////// ENEMIES KILLED BY NANA ///////////////////
     if(nanaBears >= 0){
         if(nanaBears==0)
-            al_draw_bitmap(zero,100,100,0);
+            al_draw_bitmap(zero,735,140,0);
         if(nanaBears==1)
-            al_draw_bitmap(one,100,100,0);
+            al_draw_bitmap(one,735,140,0);
         if(nanaBears==2)
-            al_draw_bitmap(two,100,100,0);
+            al_draw_bitmap(two,735,140,0);
         if(nanaBears==3)
-            al_draw_bitmap(three,100,100,0);
+            al_draw_bitmap(three,735,140,0);
         if(nanaBears==4)
-            al_draw_bitmap(four,100,100,0);
+            al_draw_bitmap(four,735,140,0);
         if(nanaBears==5)
-            al_draw_bitmap(five,100,100,0);
+            al_draw_bitmap(five,735,140,0);
         if(nanaBears==6)
-            al_draw_bitmap(six,100,100,0);
+            al_draw_bitmap(six,735,140,0);
         if(nanaBears==7)
-            al_draw_bitmap(seven,100,100,0);
+            al_draw_bitmap(seven,735,140,0);
         if(nanaBears==8)
-            al_draw_bitmap(eight,100,100,0);
+            al_draw_bitmap(eight,735,140,0);
         if(nanaBears==9)
-            al_draw_bitmap(nine,100,100,0);
+            al_draw_bitmap(nine,735,140,0);
         if(nanaBears>=10)
-            al_draw_bitmap(plusTen,100,100,0);
+            al_draw_bitmap(plusTen,735,140,0);
     }
-
-
-    if(nanaYetis >= 0){
-        if(nanaYetis==0)
-            al_draw_bitmap(zero,100,100,0);
-        if(nanaYetis==1)
-            al_draw_bitmap(one,100,100,0);
-        if(nanaYetis==2)
-            al_draw_bitmap(two,100,100,0);
-        if(nanaYetis==3)
-            al_draw_bitmap(three,100,100,0);
-        if(nanaYetis==4)
-            al_draw_bitmap(four,100,100,0);
-        if(nanaYetis==5)
-            al_draw_bitmap(five,100,100,0);
-        if(nanaYetis==6)
-            al_draw_bitmap(six,100,100,0);
-        if(nanaYetis==7)
-            al_draw_bitmap(seven,100,100,0);
-        if(nanaYetis==8)
-            al_draw_bitmap(eight,100,100,0);
-        if(nanaYetis==9)
-            al_draw_bitmap(nine,100,100,0);
-        if(nanaYetis>=10)
-            al_draw_bitmap(plusTen,100,100,0);
-    }
-
-
-    if(nanaSeals >= 0){
-        if(nanaSeals==0)
-            al_draw_bitmap(zero,100,100,0);
-        if(nanaSeals==1)
-            al_draw_bitmap(one,100,100,0);
-        if(nanaSeals==2)
-            al_draw_bitmap(two,100,100,0);
-        if(nanaSeals==3)
-            al_draw_bitmap(three,100,100,0);
-        if(nanaSeals==4)
-            al_draw_bitmap(four,100,100,0);
-        if(nanaSeals==5)
-            al_draw_bitmap(five,100,100,0);
-        if(nanaSeals==6)
-            al_draw_bitmap(six,100,100,0);
-        if(nanaSeals==7)
-            al_draw_bitmap(seven,100,100,0);
-        if(nanaSeals==8)
-            al_draw_bitmap(eight,100,100,0);
-        if(nanaSeals==9)
-            al_draw_bitmap(nine,100,100,0);
-        if(nanaSeals>=10)
-            al_draw_bitmap(plusTen,100,100,0);
-    }
-
-
 
     if(nanaPenguins >= 0){
         if(nanaPenguins==0)
-            al_draw_bitmap(zero,100,100,0);
+            al_draw_bitmap(zero,735,210,0);
         if(nanaPenguins==1)
-            al_draw_bitmap(one,100,100,0);
+            al_draw_bitmap(one,735,210,0);
         if(nanaPenguins==2)
-            al_draw_bitmap(two,100,100,0);
+            al_draw_bitmap(two,735,210,0);
         if(nanaPenguins==3)
-            al_draw_bitmap(three,100,100,0);
+            al_draw_bitmap(three,735,210,0);
         if(nanaPenguins==4)
-            al_draw_bitmap(four,100,100,0);
+            al_draw_bitmap(four,735,210,0);
         if(nanaPenguins==5)
-            al_draw_bitmap(five,100,100,0);
+            al_draw_bitmap(five,735,210,0);
         if(nanaPenguins==6)
-            al_draw_bitmap(six,100,100,0);
+            al_draw_bitmap(six,735,210,0);
         if(nanaPenguins==7)
-            al_draw_bitmap(seven,100,100,0);
+            al_draw_bitmap(seven,735,210,0);
         if(nanaPenguins==8)
-            al_draw_bitmap(eight,100,100,0);
+            al_draw_bitmap(eight,735,210,0);
         if(nanaPenguins==9)
-            al_draw_bitmap(nine,100,100,0);
+            al_draw_bitmap(nine,735,210,0);
+    }
+
+    if(nanaSeals >= 0){
+        if(nanaSeals==0)
+            al_draw_bitmap(zero,735,280,0);
+        if(nanaSeals==1)
+            al_draw_bitmap(one,735,280,0);
+        if(nanaSeals==2)
+            al_draw_bitmap(two,735,280,0);
+        if(nanaSeals==3)
+            al_draw_bitmap(three,735,280,0);
+        if(nanaSeals==4)
+            al_draw_bitmap(four,735,280,0);
+        if(nanaSeals==5)
+            al_draw_bitmap(five,735,280,0);
+        if(nanaSeals==6)
+            al_draw_bitmap(six,735,280,0);
+        if(nanaSeals==7)
+            al_draw_bitmap(seven,735,280,0);
+        if(nanaSeals==8)
+            al_draw_bitmap(eight,735,280,0);
+        if(nanaSeals==9)
+            al_draw_bitmap(nine,735,280,0);
+        if(nanaSeals>=10)
+            al_draw_bitmap(plusTen,735,280,0);
+    }
+
+    if(nanaYetis >= 0){
+        if(nanaYetis==0)
+            al_draw_bitmap(zero,735,350,0);
+        if(nanaYetis==1)
+            al_draw_bitmap(one,735,350,0);
+        if(nanaYetis==2)
+            al_draw_bitmap(two,735,350,0);
+        if(nanaYetis==3)
+            al_draw_bitmap(three,735,350,0);
+        if(nanaYetis==4)
+            al_draw_bitmap(four,735,350,0);
+        if(nanaYetis==5)
+            al_draw_bitmap(five,735,350,0);
+        if(nanaYetis==6)
+            al_draw_bitmap(six,735,350,0);
+        if(nanaYetis==7)
+            al_draw_bitmap(seven,735,350,0);
+        if(nanaYetis==8)
+            al_draw_bitmap(eight,735,350,0);
+        if(nanaYetis==9)
+            al_draw_bitmap(nine,735,350,0);
+        if(nanaYetis>=10)
+            al_draw_bitmap(plusTen,735,350,0);
     }
 
 
+
+
+
+    al_flip_display();
 
 
 
@@ -367,7 +367,7 @@ int winnerScene(ALLEGRO_DISPLAY *display,int popoBears,int nanaBears,int popoSea
     al_destroy_bitmap(eight);
     al_destroy_bitmap(nine);
     al_destroy_bitmap(plusTen);
-    al_destroy_bitmap(popoWinner);
+    al_destroy_bitmap(popWinner);
     al_destroy_bitmap(nanaWinner);
 
     return 0;
@@ -1746,7 +1746,7 @@ int startGame(int players) {
     //SET WINDOW TITLE
     al_set_window_title(display,"ICE-CLimber");
 
-    winnerScene(display,5,5,5,5,5,5,5,5);
+
     while (running) {
 
         if(currentScene==0) {
@@ -1756,6 +1756,7 @@ int startGame(int players) {
             gameModeScene(display);
         }
         else if(currentScene==2) {
+            //winnerScene(display,7,6,9,8,5,5,5,5);
             enemySelectionScene(display);
         }
         else if(currentScene==3){
